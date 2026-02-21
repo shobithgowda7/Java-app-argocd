@@ -14,8 +14,8 @@ pipeline {
         AWS_REGION    = 'ap-south-1'
         ECR_REGISTRY  = '831103387233.dkr.ecr.ap-south-1.amazonaws.com'
         ECR_REPO      = 'java-sonar-demo'
-	IMAGE_TAG     = "${BUILD_NUMBER}"
-	IMAGE_NAME    = "${ECR_REGISTRY}/${ECR_REPO}:${IMAGE_TAG}"
+		IMAGE_TAG     = "${params.BRANCH}-${BUILD_NUMBER}"
+		IMAGE_NAME    = "${ECR_REGISTRY}/${ECR_REPO}:${IMAGE_TAG}"
     }
 
     stages {
@@ -42,7 +42,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh """
-                docker build -t ${IMAGE_NAME} .
+                docker build --no-cache -t ${IMAGE_NAME} .
                 """
             }
         }
@@ -59,4 +59,3 @@ pipeline {
             }
         }
     }
-
