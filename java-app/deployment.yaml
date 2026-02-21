@@ -4,7 +4,7 @@ metadata:
   name: java-sonar-demo
   namespace: java-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: java-sonar-demo
@@ -12,8 +12,6 @@ spec:
     metadata:
       labels:
         app: java-sonar-demo
-    spec:
-      template:
     spec:
       imagePullSecrets:
       - name: ecr-secret
@@ -23,3 +21,10 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
