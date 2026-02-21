@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: java-sonar-demo
-        image: 831103387233.dkr.ecr.ap-south-1.amazonaws.com/java-sonar-demo:dev-8
+        image: 831103387233.dkr.ecr.ap-south-1.amazonaws.com/java-sonar-demo:main-11
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
