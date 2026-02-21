@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your-org>/java-sonar-argocd-manifests.git
+    repoURL: https://github.com/shobithgowda7/Java-app-argocd.git
     targetRevision: main
     path: java-app
   destination:
