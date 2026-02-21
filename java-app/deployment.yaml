@@ -13,6 +13,10 @@ spec:
       labels:
         app: java-sonar-demo
     spec:
+      template:
+    spec:
+      imagePullSecrets:
+      - name: ecr-secret
       containers:
       - name: java-sonar-demo
         image: 831103387233.dkr.ecr.ap-south-1.amazonaws.com/java-sonar-demo:main-11
