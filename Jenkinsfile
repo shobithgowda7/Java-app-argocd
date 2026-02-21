@@ -57,5 +57,32 @@ pipeline {
                     """
                 }
             }
+	stage('Update K8s Manifests (GitOps for ArgoCD)') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'github-creds',
+                    usernameVariable: 'GIT_USER',
+                    passwordVariable: 'GIT_TOKEN'
+                )]) {
+
+                    sh """
+                    rm -rf k8s-manifests
+
+                    git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/shobithgowda7/Java-app-argocd.git k8s-manifests
+
+                    cd k8s-manifests/java-app
+
+                    sed -i 's|image:.*|image: ${IMAGE_NAME}|' deployment.yaml
+
+                    git config user.email "jenkins@ci.com"
+                    git config user.name "jenkins"
+
+                    git add deployment.yaml
+                    git commit -m "Update image to ${IMAGE_TAG}"
+                    git push origin main
+                    """
+                }
+            }
         }
-    }
+     }
+   }
