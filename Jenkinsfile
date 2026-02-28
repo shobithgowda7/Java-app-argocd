@@ -77,7 +77,7 @@ pipeline {
 
             		git add deployment.yaml
             		git commit -m "Update image to ${IMAGE_TAG}" || echo "No changes to commit"
-            		git push origin main
+            		git push origin ${BRANCH}
             		'''
        	 		   }
   	  		}
