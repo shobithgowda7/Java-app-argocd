@@ -65,10 +65,9 @@ pipeline {
             		passwordVariable: 'GIT_TOKEN'
        			 )]) {
             		sh '''
-            		rm -rf k8s-manifests
             		git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/shobithgowda7/Java-app-argocd.git k8s-manifests
 
-            		cd k8s-manifests/java-app
+            		cd java-app
 
             		sed -i "s|image:.*|image: ${IMAGE_NAME}|" deployment.yaml
 
