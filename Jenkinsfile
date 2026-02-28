@@ -57,7 +57,7 @@ pipeline {
                     """
                 }
             }
-	stage('Update K8s Manifests (GitOps for ArgoCD)') {
+	stage('Update K8s Manifests repo ArgoCD') {
     		steps {
         		withCredentials([usernamePassword(
             		credentialsId: 'github-creds',
