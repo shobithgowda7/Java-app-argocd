@@ -17,7 +17,7 @@ spec:
       - name: ecr-secret
       containers:
       - name: java-sonar-demo
-        image: 831103387233.dkr.ecr.ap-south-1.amazonaws.com/java-sonar-demo:main-17
+        image: 831103387233.dkr.ecr.ap-south-1.amazonaws.com/java-sonar-demo:dev-18
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
